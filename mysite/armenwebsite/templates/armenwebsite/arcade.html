@@ -1,0 +1,45 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static "armenwebsite/style.css" %}" />
+
+<div class="topnav">
+  <a href="/site/index">Home</a>
+  <a class="active" href="#">Snake</a>
+</div>
+
+<div class="row">
+ <div class="column">
+   <canvas id="snakeCanvas" width="600" height="600"></canvas>
+ </div>
+ <div class="column">
+   <table>
+    <tr>
+    {% for score in scores %}
+      <td>
+      {{score.player_name}}
+      </td>
+    {% endfor %}
+    </tr>
+    <tr>
+    {% for score in scores %}
+      <td>
+      {{score.player_score}}
+      </td>
+    {% endfor %}
+    </tr>
+   </table>
+ </div>
+</div>
+
+<p id="score"></p>
+
+<label for="themes">Choose a Theme:</label>
+
+<select id="themes">
+ <option value="redblack">Red/Black</option>
+ <option value="blueyellow">Blue/Yellow</option>
+ <option value="orangeslate">Orange/Slate</option>
+ <option value="purplemidnight">Purple/Midnight</option>
+</select>
+
+<script src="{% static "armenwebsite/snake.js" %}"></script>
