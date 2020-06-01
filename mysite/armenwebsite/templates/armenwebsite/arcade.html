@@ -13,20 +13,16 @@
  </div>
  <div class="column">
    <table>
-    <tr>
     {% for score in scores %}
+    <tr>
       <td>
       {{score.player_name}}
       </td>
-    {% endfor %}
-    </tr>
-    <tr>
-    {% for score in scores %}
       <td>
       {{score.player_score}}
       </td>
+    <tr>
     {% endfor %}
-    </tr>
    </table>
  </div>
 </div>
@@ -42,4 +38,14 @@
  <option value="purplemidnight">Purple/Midnight</option>
 </select>
 
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+
+<form id="scoreForm" style="visibility:hidden" action="/site/snakescore" method="post" target="dummyframe">
+    {% csrf_token %}
+    <input name="playerName" id="playerName" type="text">
+    <input name="playerScore" id="playerScore" type="text">
+</form>
+
 <script src="{% static "armenwebsite/snake.js" %}"></script>
+
+<!-- form for submitting score -->
