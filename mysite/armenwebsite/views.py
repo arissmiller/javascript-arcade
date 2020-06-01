@@ -12,7 +12,7 @@ def index(request):
 
 def arcade(request):
     template = loader.get_template('armenwebsite/arcade.html')
-    scores = SnakeScore.objects.order_by('-player_score')
+    scores = SnakeScore.objects.order_by('-player_score')[:15]
     context = {'scores' : scores}
     return HttpResponse(template.render(context, request))
 
