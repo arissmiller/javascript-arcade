@@ -7,6 +7,8 @@ let gridWidth = 50;
 //canvas should always be h by 2*h
 let squareSize = canvas.height/gridHeight;
 
+//url for submitting scores
+let scoreURL = '/site/snakescore';
 //need to get these from user choice in document, choosing between themes
 var snakeColor = "#FF0040";
 var backgroundColor = "#00000";
@@ -206,8 +208,23 @@ function getColorScheme() {
 }
 
 function gameOver() {
-  //let name = prompt("Please enter your name");
-  alert("Game Over! Score:" + size);
+  if(size > 5) {
+    if(confirm('Game over! Score: ' + size + '. Would you like to submit your score?')) {
+      let name = prompt("Please enter your name");
+      //submit score and name to database
+      let scoreForm = document.getElementById('scoreForm');
+      scoreForm.playerName.value = name;
+      scoreForm.playerScore.value = size;
+      scoreForm.submit();
+      confirm("Score submitted!");
+    }
+    else {
+      return
+    }
+  }
+  else {
+    confirm('Game over! Score: ' + size);
+  }
 
 }
 
