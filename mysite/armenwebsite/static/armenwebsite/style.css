@@ -72,8 +72,6 @@
 
 #scoresTable tr:nth-child(even){background-color: #f2f2f2;}
 
-#scoresTable tr:hover {background-color: #ddd;}
-
 #scoresTable th {
   padding-top: 12px;
   padding-bottom: 12px;
